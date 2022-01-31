@@ -1,21 +1,26 @@
 <template>
   <div id="app">
-    <div v-if="routesLoaded !== 0 && routesLoaded === routes.length">
-      <router-link
-        v-for="route in routes"
-        :to="route.attributes.path"
-        :key="`link-${route.attributes.name}`"
-        >{{ route.attributes.title }}</router-link
-      >
-      <router-view />
-    </div>
-    <p v-else>Loading</p>
+    <ui-app>
+      <div v-if="routesLoaded !== 0 && routesLoaded === routes.length">
+        <router-link
+          v-for="route in routes"
+          :to="route.attributes.path"
+          :key="`link-${route.attributes.name}`"
+          >{{ route.attributes.title }}</router-link
+        >
+        <router-view />
+      </div>
+      <p v-else>Loading</p>
+    </ui-app>
   </div>
 </template>
 <script>
 import axios from "axios";
 import router from "./router";
 export default {
+  components: {
+    'ui-app': ui.uiApp
+  },
   data() {
     return {
       routes: [],
@@ -24,9 +29,11 @@ export default {
   },
 
   async created() {
+    window.process = process;
     this.routes = await axios
-      .get("http://localhost:1337/api/routes")
-      .then((resp) => resp.data.data);
+      .get("http://localhost:5000/routes")
+      .then((resp) => resp.data);
+      console.log(this.routes)
     this.routes.forEach(async (route) => {
       const script = document.createElement("script");
       script.type = "text/javascript";
