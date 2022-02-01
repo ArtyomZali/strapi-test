@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dropdown_items",
+  "info": {
+    "singularName": "dropdown-item",
+    "pluralName": "dropdown-items",
+    "displayName": "Dropdown Item"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    },
+    "dropdown_column": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::dropdown-column.dropdown-column",
+      "inversedBy": "dropdown_items"
+    }
+  }
+}

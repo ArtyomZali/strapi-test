@@ -1,3 +1,17 @@
+<template>
+  <div class="activity">
+    <ui-input-calendar v-model="value" label="Calendar" />
+    <ui-tabs v-model="tab">
+      <ui-tab name="1">Tab #1</ui-tab>
+      <ui-tab name="2">Tab #2</ui-tab>
+    </ui-tabs>
+    <ui-stepper v-model="step" total="6" label="Stepper" />
+    <ui-stepper v-model="step" total="6"> Stepper </ui-stepper>
+    <ui-modal v-model="show" title="Modal title"> Modal content </ui-modal>
+    <ui-notifications-container :options="notifications" />
+  </div>
+</template>
+
 <script>
 export default /*#__PURE__*/ {
   name: "Activity", // vue component name
@@ -24,31 +38,3 @@ export default /*#__PURE__*/ {
 };
 </script>
 
-<template>
-  <div class="activity">
-    <ui-input-calendar v-model="value" label="Calendar" />
-    <ui-tabs v-model="tab">
-      <ui-tab name="1">Tab #1</ui-tab>
-      <ui-tab name="2">Tab #2</ui-tab>
-    </ui-tabs>
-    <ui-stepper v-model="step" total="6" label="Stepper" />
-    <ui-stepper v-model="step" total="6"> Stepper </ui-stepper>
-    <ui-modal v-model="show" title="Modal title"> Modal content </ui-modal>
-    <ui-notifications-container :options="notifications" />
-  </div>
-</template>
-
-<style scoped>
-.activity {
-  display: block;
-  width: 400px;
-  margin: 25px auto;
-  border: 1px solid #ccc;
-  background: #eaeaea;
-  text-align: center;
-  padding: 25px;
-}
-.activity p {
-  margin: 0 0 1em;
-}
-</style>

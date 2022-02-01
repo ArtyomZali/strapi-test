@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dropdown_columns",
+  "info": {
+    "singularName": "dropdown-column",
+    "pluralName": "dropdown-columns",
+    "displayName": "Dropdown Column",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "width": {
+      "type": "float"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "menu_item": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::menu-item.menu-item",
+      "inversedBy": "dropdown_columns"
+    },
+    "dropdown_items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::dropdown-item.dropdown-item",
+      "mappedBy": "dropdown_column"
+    }
+  }
+}
